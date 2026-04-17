@@ -1,3 +1,5 @@
+from __future__ import annotations
+from typing import Optional
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
@@ -20,7 +22,7 @@ PLAN_PRICES = {
 }
 
 
-@router.get("/my", response_model=SubscriptionOut | None)
+@router.get("/my", response_model=Optional[SubscriptionOut])
 async def get_my_subscription(
     current_user: User = Depends(get_current_user),
     db: AsyncSession = Depends(get_db),

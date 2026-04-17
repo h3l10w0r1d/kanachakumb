@@ -1,3 +1,4 @@
+from __future__ import annotations
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, func, and_
@@ -89,6 +90,7 @@ async def list_events(
             is_recurring=event.is_recurring,
             recurrence_interval_days=event.recurrence_interval_days,
             telegram_link=event.telegram_link,
+            created_at=event.created_at,
             registered_count=registered_count,
             spots_left=spots_left,
             is_registered=str(event.id) in registered_ids,
