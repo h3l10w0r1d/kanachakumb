@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 35 30% 97%;
+    --foreground: 20 15% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 20 15% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 15% 15%;
+
+    --primary: 280 45% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 35 60% 90%;
+    --secondary-foreground: 20 15% 20%;
+
+    --muted: 35 20% 93%;
+    --muted-foreground: 20 10% 45%;
+
+    --accent: 340 50% 88%;
+    --accent-foreground: 340 50% 25%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 35 20% 85%;
+    --input: 35 20% 88%;
+    --ring: 280 45% 45%;
+
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Merriweather', 'Noto Serif Armenian', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Noto Serif Armenian', 'Merriweather', Georgia, serif;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  /* Larger click targets for elderly users */
+  button, a, [role="button"] {
+    min-height: 48px;
+    min-width: 48px;
+  }
+
+  input, select, textarea {
+    font-size: 18px !important;
+    min-height: 52px;
+  }
+
+  label {
+    font-size: 17px;
+    font-weight: 500;
+  }
+}
+
+@layer components {
+  .elder-card {
+    @apply bg-white rounded-2xl shadow-md border border-border p-6 hover:shadow-lg transition-shadow duration-200;
+  }
+
+  .elder-button-primary {
+    @apply bg-primary text-primary-foreground rounded-xl px-8 py-4 text-lg font-semibold hover:bg-primary/90 active:scale-95 transition-all duration-150 shadow-sm;
+    min-height: 56px;
+  }
+
+  .elder-button-secondary {
+    @apply bg-secondary text-secondary-foreground rounded-xl px-8 py-4 text-lg font-semibold hover:bg-secondary/80 active:scale-95 transition-all duration-150;
+    min-height: 56px;
+  }
+
+  .elder-input {
+    @apply w-full rounded-xl border-2 border-input bg-white px-5 py-4 text-lg text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-colors;
+    min-height: 56px;
+  }
+
+  .elder-label {
+    @apply block text-lg font-semibold text-foreground mb-2;
+  }
+
+  .section-title {
+    @apply text-3xl font-bold text-foreground mb-2;
+  }
+
+  .section-subtitle {
+    @apply text-xl text-muted-foreground;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus ring for accessibility */
+:focus-visible {
+  outline: 3px solid hsl(var(--primary));
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.4);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.6);
+}

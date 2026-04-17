@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: kanachakumb-api
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: kanachakumb-db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: FRONTEND_URL
+        value: https://kanachakumb.vercel.app
+      - key: ALGORITHM
+        value: HS256
+      - key: ACCESS_TOKEN_EXPIRE_DAYS
+        value: 30
+      - key: REFRESH_TOKEN_EXPIRE_DAYS
+        value: 365
+
+databases:
+  - name: kanachakumb-db
+    databaseName: kanachakumb
+    user: kanachakumb
+    plan: free
