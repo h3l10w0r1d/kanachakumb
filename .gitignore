@@ -34,3 +34,4 @@ logs/
 # Coverage
 .coverage
 htmlcov/
+.vercel
